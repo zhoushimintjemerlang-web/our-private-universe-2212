@@ -25,7 +25,7 @@ body {
 
 .book {
   width: 100%;
-  max-width: 570px;
+  max-width: 650px;
   padding: 14px;
   background: #6d4c35;
   border: 1px solid #b99a70;
@@ -55,15 +55,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 45px 12px;
+  padding: 35px 12px;
   text-align: center;
   animation: fadeIn .4s ease;
 }
 
 .message {
-  max-width: 440px;
-  font-size: clamp(23px, 5vw, 34px);
-  line-height: 1.6;
+  max-width: 490px;
+  font-size: clamp(18px, 3.5vw, 25px);
+  line-height: 1.65;
   font-weight: normal;
   font-style: italic;
   white-space: pre-line;
@@ -117,7 +117,11 @@ button:disabled {
   }
 
   .message-area {
-    padding: 35px 8px;
+    padding: 30px 8px;
+  }
+
+  .message {
+    font-size: 19px;
   }
 
   button {
@@ -132,12 +136,10 @@ button:disabled {
 <div class="book">
   <div class="paper">
 
-    <div class="page-number" id="pageNumber">01 / 08</div>
+    <div class="page-number" id="pageNumber">01 / 32</div>
 
     <main class="message-area" id="messageArea">
-      <div class="message" id="message">
-        Your message goes here.
-      </div>
+      <div class="message" id="message"></div>
     </main>
 
     <nav class="navigation">
@@ -150,14 +152,117 @@ button:disabled {
 
 <script>
 const pages = [
-  "Your first message goes here.",
-  "Your second message goes here.",
-  "Your third message goes here.",
-  "Your fourth message goes here.",
-  "Your fifth message goes here.",
-  "Your sixth message goes here.",
-  "Your seventh message goes here.",
-  "Your final message goes here."
+
+  // PAGE 01
+  `Happy Sweet Seventeen ya sayang 🎉`,
+
+  // PAGE 02
+  `Ehhh...`,
+
+  // PAGE 03
+  `Happy Birthday maksudnya... kan sudah tidak muda lagi 😂`,
+
+  // PAGE 04
+  `Happy Birthday yang ke-22 ya sayang!`,
+
+  // PAGE 05
+  `Well, jokes aside...`,
+
+  // PAGE 06
+  `Another year older, another year more wonderful.`,
+
+  // PAGE 07
+  `I hope this new chapter brings you endless happiness.`,
+
+  // PAGE 08
+  `(And for us too i guess?) 😅`,
+
+  // PAGE 09
+  `May you always find reasons to smile, even on difficult days.`,
+
+  // PAGE 10
+  `Hmmm...`,
+
+  // PAGE 11
+  `Apa lagi ya?`,
+
+  // PAGE 12
+  `Aku berharap, di usia kamu yang sekarang, ada semakin banyak hal baik yang datang ke dalam hidup kamu. Bukan hanya untuk kamu, tetapi juga untuk Papa, Mama, dan kedua adik kamu yang ganteng itu.
+
+(Aku juga gak kalah ganteng kan?) 😎`,
+
+  // PAGE 13
+  `Semoga Tuhan selalu menjaga keluarga kecil kalian, memberikan kesehatan dan menyertai setiap langkah kalian.
+
+(Kalau ditambah aku dan anak aku, mungkin bisa jadi keluarga besar ya.) 🫶
+
+Semoga kalian selalu punya waktu untuk berkumpul, berbagi cerita, tertawa bersama, dan menciptakan lebih banyak kenangan indah.
+
+(Aku mau join pleaseee!) 🤗
+
+Hopefully, one day i will be more than just a guest. 🤍`,
+
+  // PAGE 14
+  `Cukup lah ya?`,
+
+  // PAGE 15
+  `Ada lagi dehhh`,
+
+  // PAGE 16
+  `Palingan aku mau tambahin aja sih, spesifik tentang kita...`,
+
+  // PAGE 17
+  `Ada satu hal yang mungkin selama ini belum sepenuhnya aku sampaikan kepada kamu, yaitu betapa aku BENCI🌹 kamu, betapa aku menyayangi kamu, dan betapa seriusnya aku menjalani hubungan ini.
+
+6 tahun mengenal kamu... jujur, gak pernah terbayangkan oleh aku bahwa pada akhirnya kita bisa sampai di titik ini. Bahwa seseorang yang sudah cukup lama aku kenal, bahkan pernah aku campakan, ternyata bisa menjadi seseorang yang sekarang aku panggil sayang. Dan untuk itu, aku benar-benar bersyukur.`,
+
+  // PAGE 18
+  `Terima kasih karena sudah memberikan aku kesempatan. Aku gak pernah ingin menganggap hubungan kita sebagai sesuatu yang biasa saja. Aku melihatnya sebagai kesempatan yang ingin aku jaga sebaik mungkin, kesempatan yang gak ingin aku khianati, dan sesuatu yang ingin aku perjuangkan dengan sungguh-sungguh.
+
+Aku juga ingin berterima kasih karena selama ini kamu selalu berusaha memahami aku. Aku tahu mungkin gak semua hal yang aku inginkan mudah untuk kamu pahami atau lakukan, tetapi aku melihat bagaimana kamu terus mencoba. Aku menghargai itu, lebih dari yang mungkin selama ini bisa aku ungkapkan.`,
+
+  // PAGE 19
+  `Dan untuk tahun 2026 ini, aku punya satu harapan besar untuk kita...`,
+
+  // PAGE 20
+  `Aku ingin tahun ini menjadi penutup bagi segala hal dari masa lalu yang masih perlu kita selesaikan. Entah itu tentang seseorang, perasaan, kenangan, atau apa pun yang mungkin masih menyisakan keterikatan. Aku ingin kita sama-sama benar-benar bebas. Aku bebas dari masa laluku, kamu juga bebas dari masa lalumu. Bukan berarti kita harus melupakan siapa kita sebelumnya, tetapi gak ada lagi bagian dari masa lalu yang masih kita bawa, kita tunggu, atau kita pertahankan dalam hubungan yang sekarang.`,
+
+  // PAGE 21
+  `Aku ingin ketika kita memasuki perjalanan yang baru, kita benar-benar datang dengan hati yang sama-sama utuh. Gak ada bayang-bayang seseorang, gak ada perasaan yang masih tertinggal, dan gak ada hal tersembunyi yang suatu saat bisa membuat kita mempertanyakan satu sama lain.`,
+
+  // PAGE 22
+  `Aku ingin hubungan ini menjadi tempat kita pulang. Tempat di mana kita sama-sama merasa nyaman, AMAN, dihargai, dan gak perlu terus-menerus meragukan posisi masing-masing. Aku ingin kamu bisa merasa aman bersamaku, sebagaimana aku juga ingin merasakan hal yang sama darimu.`,
+
+  // PAGE 23
+  `Aku ingin kamu terus berkembang, aku juga ingin terus berkembang, dan aku ingin kita bertumbuh bersama. Bukan menjadi dua orang yang harus selalu sempurna untuk satu sama lain, tetapi dua orang yang mau terus belajar, memperbaiki diri, dan saling memahami.`,
+
+  // PAGE 24
+  `Karena kalau boleh jujur, ketika aku membayangkan masa depanku, aku gak hanya membayangkan tentang memiliki seseorang untuk menemani hari-hariku. Aku membayangkan sebuah persatuan, sebuah keluarga, dan kehidupan yang ingin aku bangun bersama kamu.`,
+
+  // PAGE 25
+  `Dan orang yang aku lihat dalam bayangan itu adalah kamu.`,
+
+  // PAGE 26
+  `Eaaak sok keren lu dah pin 🤗😂🤣😭🙏`,
+
+  // PAGE 27
+  `Kalau kata Fajar Sadboy mahhh...`,
+
+  // PAGE 28
+  `LDR berat nih bosss!`,
+
+  // PAGE 29
+  `Kukuk kukuk kukk kukk`,
+
+  // PAGE 30
+  `Sudah ya sayang ni last yapping....`,
+
+  // PAGE 31
+  `Aku malu deh....`,
+
+  // PAGE 32
+  `Intinya Love youuu so muchhh 🥰`
+
 ];
 
 let currentPage = 0;
