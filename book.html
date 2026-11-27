@@ -1,1 +1,185 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Private Book</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #493326;
+  color: #493326;
+  font-family: Georgia, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 14px;
+}
+
+.book {
+  width: 100%;
+  max-width: 540px;
+  min-height: 700px;
+  background: #f3ebdd;
+  padding: 24px;
+  box-shadow: 0 12px 35px #21140f80;
+  border: 1px solid #b99c76;
+}
+
+.paper {
+  min-height: 650px;
+  border: 1px solid #c6ad89;
+  outline: 1px solid #c6ad89;
+  outline-offset: -6px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #c6ad89;
+  padding-bottom: 14px;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 35px 5px;
+}
+
+.chapter {
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(30px, 7vw, 42px);
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.2;
+  margin: 0 0 28px;
+}
+
+.ornament {
+  color: #a68b6a;
+  letter-spacing: 6px;
+  margin-bottom: 25px;
+}
+
+.description {
+  font-size: 17px;
+  line-height: 1.8;
+  max-width: 370px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: auto;
+}
+
+button {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  padding: 11px 20px;
+  border: 1px solid #795b40;
+  background: transparent;
+  color: #493326;
+  cursor: pointer;
+}
+
+button.next {
+  background: #493326;
+  color: #f3ebdd;
+}
+
+button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+@media (max-width: 480px) {
+  .book {
+    min-height: 85vh;
+    padding: 13px;
+  }
+  .paper {
+    min-height: calc(85vh - 26px);
+    padding: 20px 14px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="book">
+  <div class="paper">
+    <div class="top">
+      <span>MR. & MRS. BUBS</span>
+      <span id="pageNumber">01 / 06</span>
+    </div>
+
+    <main class="content">
+      <div class="chapter" id="chapter">CHAPTER I</div>
+      <h1 id="heading">The Beginning</h1>
+      <div class="ornament">──── ❦ ────</div>
+      <p class="description" id="description">
+        Every story has a beginning.
+      </p>
+    </main>
+
+    <div class="navigation">
+      <button id="prev" onclick="changePage(-1)">← Previous</button>
+      <button id="next" class="next" onclick="changePage(1)">Next →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const pages = [
+  ["CHAPTER I", "The Beginning", "Every story has a beginning."],
+  ["CHAPTER II", "How We Found Each Other", "A story waiting to be told."],
+  ["CHAPTER III", "Little Things, Big Memories", "The moments that became our memories."],
+  ["CHAPTER IV", "Through Time and Distance", "Every mile is part of our story."],
+  ["CHAPTER V", "A Letter to You", "A few words from my heart."],
+  ["CHAPTER VI", "Forever in My Universe", "And our story continues."]
+];
+
+let currentPage = 0;
+
+function changePage(direction) {
+  const nextPage = currentPage + direction;
+  if (nextPage < 0 || nextPage >= pages.length) return;
+
+  currentPage = nextPage;
+  const page = pages[currentPage];
+
+  document.getElementById("chapter").textContent = page[0];
+  document.getElementById("heading").textContent = page[1];
+  document.getElementById("description").textContent = page[2];
+  document.getElementById("pageNumber").textContent =
+    String(currentPage + 1).padStart(2, "0") + " / 06";
+
+  document.getElementById("prev").disabled = currentPage === 0;
+  document.getElementById("next").disabled =
+    currentPage === pages.length - 1;
+}
+
+changePage(0);
+</script>
+</body>
+</html>
