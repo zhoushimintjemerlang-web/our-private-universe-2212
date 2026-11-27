@@ -13,165 +13,199 @@
         <meta http-equiv="pragma" content="no-cache" />
 
         <style>
-            .staticrypt-hr {
-                margin-top: 20px;
-                margin-bottom: 20px;
-                border: 0;
-                border-top: 1px solid #eee;
-            }
-
-            .staticrypt-page {
-                width: 360px;
-                padding: 8% 0 0;
-                margin: auto;
-                box-sizing: border-box;
-            }
-
-            .staticrypt-form {
-                position: relative;
-                z-index: 1;
-                background: #ffffff;
-                max-width: 360px;
-                margin: 0 auto 100px;
-                padding: 45px;
-                text-align: center;
-                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-            }
-
-            .staticrypt-form input[type="password"],
-            input[type="text"] {
-                background: inherit;
-                border: 0;
-                box-sizing: border-box; /* This ensures padding is included in the total width */
-                font-size: 14px;
-                outline: 0;
-                padding: 15px 30px 15px 15px; /* Adjust the padding to ensure there is space for the icon */
-                width: 100%;
-            }
-
-            .staticrypt-password-container {
-                position: relative;
-                outline: 0;
-                background: #f2f2f2;
-                width: 100%;
-                border: 0;
-                margin: 0 0 15px;
-                box-sizing: border-box;
-            }
-
-            .staticrypt-toggle-password-visibility {
-                cursor: pointer;
-                height: 20px;
-                opacity: 60%;
-                padding: 13px;
-                position: absolute;
-                right: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 20px;
-            }
-
-            .staticrypt-form .staticrypt-decrypt-button {
-                text-transform: uppercase;
-                outline: 0;
-                background: #4CAF50;
-                width: 100%;
-                border: 0;
-                padding: 15px;
-                color: #ffffff;
-                font-size: 14px;
-                cursor: pointer;
-            }
-
-            .staticrypt-form .staticrypt-decrypt-button:hover,
-            .staticrypt-form .staticrypt-decrypt-button:active,
-            .staticrypt-form .staticrypt-decrypt-button:focus {
-                background: #4CAF50;
-                filter: brightness(92%);
-            }
-
-            .staticrypt-html {
-                height: 100%;
-            }
-
-            .staticrypt-body {
-                height: 100%;
-                margin: 0;
-            }
-
-            .staticrypt-content {
-                height: 100%;
-                margin-bottom: 1em;
-                background: #76B852;
-                font-family: "Arial", sans-serif;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
-
-            .staticrypt-instructions {
-                margin-top: -1em;
-                margin-bottom: 1em;
-            }
-
-            .staticrypt-title {
-                font-size: 1.5em;
-            }
-
-            label.staticrypt-remember {
-                display: flex;
-                align-items: center;
-                margin-bottom: 1em;
-            }
-
-            .staticrypt-remember input[type="checkbox"] {
-                transform: scale(1.5);
-                margin-right: 1em;
-            }
-
-            .hidden {
-                display: none !important;
-            }
-
-            .staticrypt-spinner-container {
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .staticrypt-spinner {
-                display: inline-block;
-                width: 2rem;
-                height: 2rem;
-                vertical-align: text-bottom;
-                border: 0.25em solid gray;
-                border-right-color: transparent;
-                border-radius: 50%;
-                -webkit-animation: spinner-border 0.75s linear infinite;
-                animation: spinner-border 0.75s linear infinite;
-                animation-duration: 0.75s;
-                animation-timing-function: linear;
-                animation-delay: 0s;
-                animation-iteration-count: infinite;
-                animation-direction: normal;
-                animation-fill-mode: none;
-                animation-play-state: running;
-                animation-name: spinner-border;
-            }
-
-            @keyframes spinner-border {
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
-
-            @media screen and (-webkit-min-device-pixel-ratio: 0) {
-                .staticrypt-form input[type="password"],
-                input[type="text"] {
-                    font-size: 16px;
-                }
-            }
-        </style>
+:root {
+  --emerald: #062b24;
+  --emerald-deep: #031713;
+  --gold: #d6b56e;
+  --gold-soft: #a98545;
+  --ivory: #f3e9d2;
+}
+* { box-sizing: border-box; }
+.staticrypt-html, .staticrypt-body { min-height: 100%; margin: 0; }
+.staticrypt-body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 38%, rgba(24, 83, 65, .48), transparent 48%),
+    radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, .72), transparent 58%),
+    linear-gradient(135deg, #020d0b 0%, #07352b 48%, #020e0c 100%);
+  color: var(--ivory);
+  font-family: Georgia, "Times New Roman", serif;
+  -webkit-font-smoothing: antialiased;
+}
+.staticrypt-content {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 34px 18px;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+.staticrypt-content::before {
+  content: "";
+  position: fixed;
+  inset: 18px;
+  border: 1px solid rgba(214, 181, 110, .58);
+  pointer-events: none;
+}
+.staticrypt-content::after {
+  content: "";
+  position: fixed;
+  inset: 25px;
+  border: 1px solid rgba(214, 181, 110, .18);
+  pointer-events: none;
+}
+.staticrypt-page {
+  width: 100%;
+  max-width: 440px;
+  margin: auto;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+.staticrypt-form {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 42px 34px 36px;
+  text-align: center;
+  background: linear-gradient(155deg, rgba(7, 38, 32, .97), rgba(2, 17, 14, .98));
+  border: 1px solid var(--gold-soft);
+  outline: 1px solid rgba(214, 181, 110, .25);
+  outline-offset: 7px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .55), inset 0 0 35px rgba(214, 181, 110, .035);
+}
+.staticrypt-monogram {
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--gold);
+  font-size: 37px;
+  letter-spacing: -4px;
+  padding-right: 4px;
+  text-shadow: 0 2px 14px rgba(214, 181, 110, .2);
+}
+.staticrypt-monogram::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+}
+.staticrypt-monogram::after {
+  content: "✦";
+  position: absolute;
+  top: -3px;
+  right: 5px;
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 0;
+  text-shadow: 0 0 10px rgba(214, 181, 110, .6);
+}
+.staticrypt-instructions { margin: 0 0 27px; }
+.staticrypt-title {
+  margin: 0;
+  color: var(--ivory);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 4.8vw, 25px);
+  font-weight: normal;
+  line-height: 1.45;
+  letter-spacing: .2px;
+}
+.staticrypt-hr {
+  width: 54px;
+  margin: 24px auto;
+  border: 0;
+  border-top: 1px solid var(--gold);
+  opacity: .8;
+}
+.staticrypt-password-container {
+  position: relative;
+  width: 100%;
+  margin: 0 0 18px;
+  background: rgba(0, 0, 0, .22);
+  border: 1px solid rgba(214, 181, 110, .62);
+}
+.staticrypt-form input[type="password"],
+.staticrypt-form input[type="text"] {
+  display: block;
+  width: 100%;
+  padding: 16px 44px 16px 16px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ivory);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  text-align: center;
+}
+.staticrypt-form input::placeholder { color: rgba(243, 233, 210, .66); opacity: 1; }
+.staticrypt-toggle-password-visibility {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 19px;
+  height: 19px;
+  padding: 0;
+  opacity: .72;
+  filter: invert(82%) sepia(27%) saturate(560%) hue-rotate(5deg) brightness(92%);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.staticrypt-form .staticrypt-decrypt-button {
+  width: 100%;
+  padding: 16px 14px;
+  border: 1px solid #e6c982;
+  outline: 1px solid rgba(214, 181, 110, .22);
+  outline-offset: 3px;
+  background: linear-gradient(135deg, #e4c77f, #b88c43);
+  color: #10271f;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: filter .2s ease, transform .2s ease;
+}
+.staticrypt-form .staticrypt-decrypt-button:hover,
+.staticrypt-form .staticrypt-decrypt-button:focus {
+  filter: brightness(1.1);
+}
+.staticrypt-form .staticrypt-decrypt-button:active { transform: translateY(1px); }
+.staticrypt-remember { color: var(--ivory); }
+.staticrypt-remember input { accent-color: var(--gold); }
+.hidden { display: none !important; }
+.staticrypt-spinner-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--emerald-deep);
+}
+.staticrypt-spinner {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border: .22em solid rgba(214, 181, 110, .35);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-border .75s linear infinite;
+}
+@keyframes spinner-border { to { transform: rotate(360deg); } }
+@media (max-width: 480px) {
+  .staticrypt-content { padding: 28px 25px; }
+  .staticrypt-content::before { inset: 12px; }
+  .staticrypt-content::after { inset: 18px; }
+  .staticrypt-form { padding: 35px 23px 30px; }
+  .staticrypt-monogram { width: 82px; height: 82px; font-size: 34px; margin-bottom: 23px; }
+}
+</style>
     </head>
 
     <body class="staticrypt-body">
@@ -183,7 +217,8 @@
             <div class="staticrypt-page">
                 <div class="staticrypt-form">
                     <div class="staticrypt-instructions">
-                        <p class="staticrypt-title">This site is the property of Mr. & Mrs. Bubs</p>
+                        <div class="staticrypt-monogram" aria-label="KH monogram">KH</div>
+                        <p class="staticrypt-title">This book is the property of Mr. &amp; Mrs. Bubs</p>
                         <p></p>
                     </div>
 
