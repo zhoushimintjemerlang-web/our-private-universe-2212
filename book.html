@@ -3,183 +3,416 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Private Book</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mr. & Mrs. Bubs — Our Private Book</title>
+
 <style>
+:root {
+  --paper: #f3ead9;
+  --paper-light: #faf5e9;
+  --ink: #493326;
+  --sepia: #8c7052;
+  --gold: #b69a70;
+  --line: #c9b18b;
+}
+
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background: #493326;
-  color: #493326;
-  font-family: Georgia, serif;
+  padding: 28px 14px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 24px 14px;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at center, #80634a 0%, #493326 75%);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
 }
 
 .book {
   width: 100%;
-  max-width: 540px;
-  min-height: 700px;
-  background: #f3ebdd;
-  padding: 24px;
-  box-shadow: 0 12px 35px #21140f80;
-  border: 1px solid #b99c76;
+  max-width: 570px;
+  min-height: 740px;
+  padding: 15px;
+  background: #6d4c35;
+  border: 1px solid #b99a70;
+  border-radius: 4px 12px 12px 4px;
+  box-shadow: 0 18px 50px #1c100c99;
 }
 
 .paper {
-  min-height: 650px;
-  border: 1px solid #c6ad89;
-  outline: 1px solid #c6ad89;
-  outline-offset: -6px;
-  padding: 24px 20px;
+  position: relative;
+  min-height: 710px;
+  padding: 25px 25px 22px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  background:
+    radial-gradient(ellipse at 10% 10%, #fff9e8aa, transparent 55%),
+    radial-gradient(ellipse at 90% 90%, #d9c5a366, transparent 55%),
+    var(--paper);
+  border: 1px solid var(--line);
+  outline: 1px solid var(--line);
+  outline-offset: -7px;
+}
+
+.paper::before,
+.paper::after {
+  position: absolute;
+  content: "❧";
+  color: var(--gold);
+  font-size: 25px;
+  opacity: .75;
+}
+
+.paper::before {
+  top: 16px;
+  left: 18px;
+}
+
+.paper::after {
+  right: 18px;
+  bottom: 16px;
+  transform: rotate(180deg);
 }
 
 .top {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
-  letter-spacing: 1px;
-  border-bottom: 1px solid #c6ad89;
-  padding-bottom: 14px;
+  align-items: center;
+  padding: 5px 5px 15px;
+  border-bottom: 1px solid var(--line);
+  color: var(--sepia);
+  font-size: 11px;
+  letter-spacing: 1.7px;
 }
 
 .content {
   flex: 1;
+  min-height: 500px;
+  padding: 35px 8px 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 35px 5px;
+  animation: appear .45s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .chapter {
-  font-size: 12px;
+  margin-bottom: 17px;
+  color: var(--sepia);
+  font-size: 11px;
   letter-spacing: 3px;
-  margin-bottom: 18px;
 }
 
 h1 {
-  font-size: clamp(30px, 7vw, 42px);
+  max-width: 440px;
+  margin: 0;
+  font-size: clamp(31px, 7vw, 45px);
+  line-height: 1.15;
   font-weight: normal;
   font-style: italic;
-  line-height: 1.2;
-  margin: 0 0 28px;
 }
 
 .ornament {
-  color: #a68b6a;
-  letter-spacing: 6px;
-  margin-bottom: 25px;
+  margin: 25px 0;
+  color: var(--gold);
+  font-size: 15px;
+  letter-spacing: 5px;
 }
 
 .description {
+  max-width: 390px;
+  margin: 0;
   font-size: 17px;
+  line-height: 1.9;
+  white-space: pre-line;
+}
+
+.illustration {
+  width: 100%;
+  max-width: 330px;
+  min-height: 145px;
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #c9b18b88;
+  background: #e9ddc7;
+  color: var(--sepia);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.photo-grid {
+  width: 100%;
+  max-width: 390px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.photo-slot {
+  min-height: 120px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e9ddc7;
+  border: 1px solid var(--line);
+  box-shadow: 0 3px 8px #49332620;
+  color: var(--sepia);
+  font-size: 12px;
+  font-style: italic;
+}
+
+.letter {
+  width: 100%;
+  max-width: 390px;
+  margin-top: 20px;
+  padding: 24px 20px;
+  background: #eee1c9;
+  border: 1px solid var(--line);
+  box-shadow: 0 5px 15px #49332620;
+  font-size: 15px;
   line-height: 1.8;
-  max-width: 370px;
+  font-style: italic;
+}
+
+.video-slot {
+  width: 100%;
+  max-width: 390px;
+  aspect-ratio: 16 / 9;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #6c5745;
+  color: var(--paper-light);
+  border: 5px solid #e4d5bb;
+  outline: 1px solid var(--gold);
+  font-size: 14px;
+  font-style: italic;
 }
 
 .navigation {
   display: flex;
   justify-content: space-between;
-  gap: 15px;
-  margin-top: auto;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
 }
 
 button {
-  font-family: Georgia, serif;
-  font-size: 14px;
-  padding: 11px 20px;
-  border: 1px solid #795b40;
+  min-width: 112px;
+  padding: 11px 17px;
+  border: 1px solid var(--sepia);
   background: transparent;
-  color: #493326;
+  color: var(--ink);
+  font-family: Georgia, serif;
+  font-size: 13px;
   cursor: pointer;
+  transition: background .2s, color .2s;
 }
 
 button.next {
-  background: #493326;
-  color: #f3ebdd;
+  background: var(--ink);
+  color: var(--paper-light);
+}
+
+button:hover:not(:disabled) {
+  background: var(--sepia);
+  color: white;
 }
 
 button:disabled {
-  opacity: 0.3;
+  opacity: .3;
   cursor: default;
 }
 
+.footer {
+  padding-top: 14px;
+  text-align: center;
+  color: var(--sepia);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
 @media (max-width: 480px) {
+  body { padding: 12px 8px; }
+
   .book {
-    min-height: 85vh;
-    padding: 13px;
+    min-height: 0;
+    padding: 9px;
   }
+
   .paper {
-    min-height: calc(85vh - 26px);
-    padding: 20px 14px;
+    min-height: 680px;
+    padding: 22px 15px 17px;
+  }
+
+  .content {
+    min-height: 480px;
+    padding: 30px 5px 20px;
+  }
+
+  .description { font-size: 15px; }
+
+  button {
+    min-width: 100px;
+    padding: 10px 12px;
   }
 }
 </style>
 </head>
 
 <body>
+
 <div class="book">
   <div class="paper">
-    <div class="top">
+
+    <header class="top">
       <span>MR. & MRS. BUBS</span>
       <span id="pageNumber">01 / 06</span>
-    </div>
+    </header>
 
-    <main class="content">
-      <div class="chapter" id="chapter">CHAPTER I</div>
-      <h1 id="heading">The Beginning</h1>
+    <main class="content" id="content">
+      <div class="chapter">CHAPTER I</div>
+      <h1>The Beginning</h1>
       <div class="ornament">──── ❦ ────</div>
-      <p class="description" id="description">
-        Every story has a beginning.
-      </p>
+      <p class="description">Every story has a beginning.</p>
+      <div class="illustration">An illustration will live here</div>
     </main>
 
-    <div class="navigation">
+    <nav class="navigation">
       <button id="prev" onclick="changePage(-1)">← Previous</button>
       <button id="next" class="next" onclick="changePage(1)">Next →</button>
-    </div>
+    </nav>
+
+    <footer class="footer">A STORY WRITTEN FOR TWO</footer>
+
   </div>
 </div>
 
 <script>
 const pages = [
-  ["CHAPTER I", "The Beginning", "Every story has a beginning."],
-  ["CHAPTER II", "How We Found Each Other", "A story waiting to be told."],
-  ["CHAPTER III", "Little Things, Big Memories", "The moments that became our memories."],
-  ["CHAPTER IV", "Through Time and Distance", "Every mile is part of our story."],
-  ["CHAPTER V", "A Letter to You", "A few words from my heart."],
-  ["CHAPTER VI", "Forever in My Universe", "And our story continues."]
+  {
+    chapter: "CHAPTER I",
+    title: "The Beginning",
+    text: "Every story has a beginning.\n\nAnd somehow, ours became my favourite story to tell.",
+    type: "illustration",
+    extra: "A place for our opening illustration"
+  },
+  {
+    chapter: "CHAPTER II",
+    title: "How We Found Each Other",
+    text: "Two separate lives.\nTwo different paths.\n\nUntil one day, they crossed.",
+    type: "illustration",
+    extra: "A place for a vintage illustration"
+  },
+  {
+    chapter: "CHAPTER III",
+    title: "Little Things, Big Memories",
+    text: "Some of the smallest moments become the memories we treasure most.",
+    type: "photos"
+  },
+  {
+    chapter: "CHAPTER IV",
+    title: "Through Time and Distance",
+    text: "Different days, different places.\n\nYet somehow, a part of my heart always finds its way to you.",
+    type: "illustration",
+    extra: "A place for a landscape illustration"
+  },
+  {
+    chapter: "CHAPTER V",
+    title: "A Letter to You",
+    text: "A little letter, written with love.",
+    type: "letter"
+  },
+  {
+    chapter: "CHAPTER VI",
+    title: "Forever in My Universe",
+    text: "And for every chapter ahead, I hope we keep choosing each other.",
+    type: "video"
+  }
 ];
 
 let currentPage = 0;
 
 function changePage(direction) {
   const nextPage = currentPage + direction;
+
   if (nextPage < 0 || nextPage >= pages.length) return;
 
   currentPage = nextPage;
-  const page = pages[currentPage];
+  renderPage();
+}
 
-  document.getElementById("chapter").textContent = page[0];
-  document.getElementById("heading").textContent = page[1];
-  document.getElementById("description").textContent = page[2];
+function renderPage() {
+  const page = pages[currentPage];
+  const content = document.getElementById("content");
+
+  let extra = "";
+
+  if (page.type === "illustration") {
+    extra = `<div class="illustration">${page.extra}</div>`;
+  }
+
+  if (page.type === "photos") {
+    extra = `
+      <div class="photo-grid">
+        <div class="photo-slot">Photo 01</div>
+        <div class="photo-slot">Photo 02</div>
+        <div class="photo-slot">Photo 03</div>
+        <div class="photo-slot">Photo 04</div>
+      </div>`;
+  }
+
+  if (page.type === "letter") {
+    extra = `
+      <div class="letter">
+        My dearest love,<br><br>
+        A space for your personal birthday letter.<br><br>
+        With all my love.
+      </div>`;
+  }
+
+  if (page.type === "video") {
+    extra = `<div class="video-slot">Our film will appear here</div>`;
+  }
+
+  content.style.animation = "none";
+  void content.offsetWidth;
+  content.style.animation = "appear .45s ease";
+
+  content.innerHTML = `
+    <div class="chapter">${page.chapter}</div>
+    <h1>${page.title}</h1>
+    <div class="ornament">──── ❦ ────</div>
+    <p class="description">${page.text}</p>
+    ${extra}
+  `;
+
   document.getElementById("pageNumber").textContent =
-    String(currentPage + 1).padStart(2, "0") + " / 06";
+    String(currentPage + 1).padStart(2, "0") +
+    " / " + String(pages.length).padStart(2, "0");
 
   document.getElementById("prev").disabled = currentPage === 0;
   document.getElementById("next").disabled =
     currentPage === pages.length - 1;
 }
 
-changePage(0);
+renderPage();
 </script>
+
 </body>
 </html>
