@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html class="staticrypt-html">
-<head>
-<meta charset="utf-8">
-<title>Mr. &amp; Mrs. Bubs</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700;800&display=swap" rel="stylesheet">
-<style>
+    <head>
+        <meta charset="utf-8" />
+        <title>Mr. & Mrs. Bubs</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700;800&display=swap" rel="stylesheet" />
+
+        <!-- do not cache this page -->
+        <meta http-equiv="cache-control" content="max-age=0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+        <meta http-equiv="pragma" content="no-cache" />
+
+        <style>
 :root {
   --emerald: #062b24;
   --emerald-deep: #031713;
@@ -287,10 +295,11 @@
 .staticrypt-form .staticrypt-decrypt-button { font-size: 20px; letter-spacing: .5px; }
 .staticrypt-remember { font-size: 17px; }
 
-
-</head>
-<body class="staticrypt-body">
-        <div id="staticrypt_content" class="staticrypt-content">
+</style>
+    </head>
+    </head>
+    <body class="staticrypt-body">
+<div id="staticrypt_content" class="staticrypt-content">
             <div class="staticrypt-page">
                 <div class="staticrypt-form">
                     <div class="staticrypt-instructions">
@@ -340,98 +349,32 @@
             </div>
         </div>
 
-        
-<div id="birthday-book" class="hidden">
-  <div class="book"><div class="paper">
-    <div class="page-number" id="pageNumber">01 / 32</div>
-    <main class="message-area" id="messageArea"><div class="message" id="message"></div></main>
-    <nav class="navigation">
-      <button id="prev" type="button">← Previous</button>
-      <button id="next" class="next" type="button">Next →</button>
-    </nav>
-  </div></div>
-</div>
 <script>
-const TEMPORARY_PASSWORD = "123456";
-const gate = document.getElementById("staticrypt_content");
-const book = document.getElementById("birthday-book");
-const passwordInput = document.getElementById("staticrypt-password");
-const toggleIcon = document.querySelector(".staticrypt-toggle-password-visibility");
+(() => {
+  const TEMPORARY_PASSWORD = "123456";
+  const bookHTML = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Mr. & Mrs. Bubs</title>\n\n<style>\n* {\n  box-sizing: border-box;\n}\n\nbody {\n  margin: 0;\n  min-height: 100vh;\n  padding: 20px 12px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: #493326;\n  font-family: Georgia, \"Times New Roman\", serif;\n  color: #493326;\n}\n\n.book {\n  width: 100%;\n  max-width: 650px;\n  padding: 14px;\n  background: #6d4c35;\n  border: 1px solid #b99a70;\n  box-shadow: 0 18px 50px #21140f80;\n}\n\n.paper {\n  min-height: 680px;\n  padding: 25px 24px;\n  display: flex;\n  flex-direction: column;\n  background: #f3ead9;\n  border: 1px solid #c9b18b;\n  outline: 1px solid #c9b18b;\n  outline-offset: -7px;\n}\n\n.page-number {\n  text-align: right;\n  color: #8c7052;\n  font-size: 11px;\n  letter-spacing: 2px;\n}\n\n.message-area {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 35px 12px;\n  text-align: center;\n  animation: fadeIn .4s ease;\n}\n\n.message {\n  max-width: 490px;\n  font-size: clamp(18px, 3.5vw, 25px);\n  line-height: 1.65;\n  font-weight: normal;\n  font-style: italic;\n  white-space: pre-line;\n  overflow-wrap: anywhere;\n}\n\n.navigation {\n  display: flex;\n  justify-content: space-between;\n  gap: 12px;\n  padding-top: 18px;\n  border-top: 1px solid #c9b18b;\n}\n\nbutton {\n  min-width: 110px;\n  padding: 11px 16px;\n  border: 1px solid #8c7052;\n  background: transparent;\n  color: #493326;\n  font-family: Georgia, serif;\n  font-size: 13px;\n  cursor: pointer;\n}\n\nbutton.next {\n  background: #493326;\n  color: #f3ead9;\n}\n\nbutton:disabled {\n  opacity: .3;\n  cursor: default;\n}\n\n@keyframes fadeIn {\n  from {\n    opacity: 0;\n    transform: translateY(8px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n@media (max-width: 480px) {\n  .paper {\n    min-height: 78vh;\n    padding: 24px 17px;\n  }\n\n  .message-area {\n    padding: 30px 8px;\n  }\n\n  .message {\n    font-size: 19px;\n  }\n\n  button {\n    min-width: 95px;\n  }\n}\n</style>\n</head>\n\n<body>\n\n<div class=\"book\">\n  <div class=\"paper\">\n\n    <div class=\"page-number\" id=\"pageNumber\">01 / 32</div>\n\n    <main class=\"message-area\" id=\"messageArea\">\n      <div class=\"message\" id=\"message\"></div>\n    </main>\n\n    <nav class=\"navigation\">\n      <button id=\"prev\" onclick=\"changePage(-1)\">← Previous</button>\n      <button id=\"next\" class=\"next\" onclick=\"changePage(1)\">Next →</button>\n    </nav>\n\n  </div>\n</div>\n\n<script>\nconst pages = [\n\n  // PAGE 01\n  `Happy Sweet Seventeen ya sayang 🎉`,\n\n  // PAGE 02\n  `Ehhh...`,\n\n  // PAGE 03\n  `Happy Birthday maksudnya... kan sudah tidak muda lagi 😂`,\n\n  // PAGE 04\n  `Happy Birthday yang ke-22 ya sayang!`,\n\n  // PAGE 05\n  `Well, jokes aside...`,\n\n  // PAGE 06\n  `Another year older, another year more wonderful.`,\n\n  // PAGE 07\n  `I hope this new chapter brings you endless happiness.`,\n\n  // PAGE 08\n  `(And for us too i guess?) 😅`,\n\n  // PAGE 09\n  `May you always find reasons to smile, even on difficult days.`,\n\n  // PAGE 10\n  `Hmmm...`,\n\n  // PAGE 11\n  `Apa lagi ya?`,\n\n  // PAGE 12\n  `Aku berharap, di usia kamu yang sekarang, ada semakin banyak hal baik yang datang ke dalam hidup kamu. Bukan hanya untuk kamu, tetapi juga untuk Papa, Mama, dan kedua adik kamu yang ganteng itu.\n\n(Aku juga gak kalah ganteng kan?) 😎`,\n\n  // PAGE 13\n  `Semoga Tuhan selalu menjaga keluarga kecil kalian, memberikan kesehatan dan menyertai setiap langkah kalian.\n\n(Kalau ditambah aku dan anak aku, mungkin bisa jadi keluarga besar ya.) 🫶\n\nSemoga kalian selalu punya waktu untuk berkumpul, berbagi cerita, tertawa bersama, dan menciptakan lebih banyak kenangan indah.\n\n(Aku mau join pleaseee!)\n\nHopefully, one day i will be more than just a guest. 🤍`,\n\n  // PAGE 14\n  `Cukup lah ya?`,\n\n  // PAGE 15\n  `Ada lagi dehhh`,\n\n  // PAGE 16\n  `Palingan aku mau tambahin aja sih, spesifik tentang kita...`,\n\n  // PAGE 17\n  `Ada satu hal yang mungkin selama ini belum sepenuhnya aku sampaikan kepada kamu, yaitu betapa aku BENCI🌹 kamu, betapa aku menyayangi kamu, dan betapa seriusnya aku menjalani hubungan ini.\n\n6 tahun mengenal kamu... jujur, gak pernah terbayangkan oleh aku bahwa pada akhirnya kita bisa sampai di titik ini. Bahwa seseorang yang sudah cukup lama aku kenal, bahkan pernah aku campakan, ternyata bisa menjadi seseorang yang sekarang aku panggil sayang. Dan untuk itu, aku benar-benar bersyukur.`,\n\n  // PAGE 18\n  `Terima kasih karena sudah memberikan aku kesempatan. Aku gak pernah ingin menganggap hubungan kita sebagai sesuatu yang biasa saja. Aku melihatnya sebagai kesempatan yang ingin aku jaga sebaik mungkin, kesempatan yang gak ingin aku khianati, dan sesuatu yang ingin aku perjuangkan dengan sungguh-sungguh.\n\nAku juga ingin berterima kasih karena selama ini kamu selalu berusaha memahami aku. Aku tahu mungkin gak semua hal yang aku inginkan mudah untuk kamu pahami atau lakukan, tetapi aku melihat bagaimana kamu terus mencoba. Aku menghargai itu, lebih dari yang mungkin selama ini bisa aku ungkapkan.`,\n\n  // PAGE 19\n  `Dan untuk tahun 2026 ini, aku punya satu harapan besar untuk kita...`,\n\n  // PAGE 20\n  `Aku ingin tahun ini menjadi penutup bagi segala hal dari masa lalu yang masih perlu kita selesaikan. Entah itu tentang seseorang, perasaan, kenangan, atau apa pun yang mungkin masih menyisakan keterikatan. Aku ingin kita sama-sama benar-benar bebas. Aku bebas dari masa laluku, kamu juga bebas dari masa lalumu. Bukan berarti kita harus melupakan siapa kita sebelumnya, tetapi gak ada lagi bagian dari masa lalu yang masih kita bawa, kita tunggu, atau kita pertahankan dalam hubungan yang sekarang.`,\n\n  // PAGE 21\n  `Aku ingin ketika kita memasuki perjalanan yang baru, kita benar-benar datang dengan hati yang sama-sama utuh. Gak ada bayang-bayang seseorang, gak ada perasaan yang masih tertinggal, dan gak ada hal tersembunyi yang suatu saat bisa membuat kita mempertanyakan satu sama lain.`,\n\n  // PAGE 22\n  `Aku ingin hubungan ini menjadi tempat kita pulang. Tempat di mana kita sama-sama merasa nyaman, AMAN, dihargai, dan gak perlu terus-menerus meragukan posisi masing-masing. Aku ingin kamu bisa merasa aman bersamaku, sebagaimana aku juga ingin merasakan hal yang sama darimu.`,\n\n  // PAGE 23\n  `Aku ingin kamu terus berkembang, aku juga ingin terus berkembang, dan aku ingin kita bertumbuh bersama. Bukan menjadi dua orang yang harus selalu sempurna untuk satu sama lain, tetapi dua orang yang mau terus belajar, memperbaiki diri, dan saling memahami.`,\n\n  // PAGE 24\n  `Karena kalau boleh jujur, ketika aku membayangkan masa depanku, aku gak hanya membayangkan tentang memiliki seseorang untuk menemani hari-hariku. Aku membayangkan sebuah persatuan, sebuah keluarga, dan kehidupan yang ingin aku bangun bersama kamu.`,\n\n  // PAGE 25\n  `Dan orang yang aku lihat dalam bayangan itu adalah kamu.`,\n\n  // PAGE 26\n  `Eaaak sok keren lu dah pin 🤗😂🤣😭🙏`,\n\n  // PAGE 27\n  `Kalau kata Fajar Sadboy mahhh...`,\n\n  // PAGE 28\n  `LDR berat nih bosss!`,\n\n  // PAGE 29\n  `Kukuk kukuk kukk kukk`,\n\n  // PAGE 30\n  `Sudah ya sayang ni last yapping....`,\n\n  // PAGE 31\n  `Aku malu deh....`,\n\n  // PAGE 32\n  `Intinya Love youuu so muchhh 🥰`\n\n];\n\nlet currentPage = 0;\n\nfunction renderPage() {\n  const message = document.getElementById(\"message\");\n  const area = document.getElementById(\"messageArea\");\n\n  area.style.animation = \"none\";\n  void area.offsetWidth;\n  area.style.animation = \"fadeIn .4s ease\";\n\n  message.textContent = pages[currentPage];\n\n  document.getElementById(\"pageNumber\").textContent =\n    String(currentPage + 1).padStart(2, \"0\") +\n    \" / \" +\n    String(pages.length).padStart(2, \"0\");\n\n  document.getElementById(\"prev\").disabled = currentPage === 0;\n  document.getElementById(\"next\").disabled =\n    currentPage === pages.length - 1;\n}\n\nfunction changePage(direction) {\n  const nextPage = currentPage + direction;\n\n  if (nextPage < 0 || nextPage >= pages.length) return;\n\n  currentPage = nextPage;\n  renderPage();\n}\n\nrenderPage();\n<\/script>\n\n</body>\n</html>";
+  const form = document.getElementById("staticrypt-form");
+  const passwordInput = document.getElementById("staticrypt-password");
+  const eye = document.querySelector(".staticrypt-toggle-password-visibility");
 
-toggleIcon.addEventListener("click", () => {
-  passwordInput.type = passwordInput.type === "password" ? "text" : "password";
-});
-
-document.getElementById("staticrypt-form").addEventListener("submit", function (event) {
-  event.preventDefault();
-  if (passwordInput.value === TEMPORARY_PASSWORD) {
-    gate.classList.add("hidden");
-    book.classList.remove("hidden");
-    document.body.style.background = "#493326";
-    document.body.style.padding = "0";
-    document.body.style.fontFamily = 'Georgia, "Times New Roman", serif';
-    renderPage();
-  } else {
-    alert("Oops! 🔐\nPassword belum tepat...");
-    passwordInput.focus();
-    passwordInput.select();
+  if (eye) {
+    eye.addEventListener("click", () => {
+      passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+    });
   }
-});
 
-const pages = [
-  "Happy Sweet Seventeen ya sayang 🎉",
-  "Ehhh...",
-  "Happy Birthday maksudnya... kan sudah tidak muda lagi 😂",
-  "Happy Birthday yang ke-22 ya sayang!",
-  "Well, jokes aside...",
-  "Another year older, another year more wonderful.",
-  "I hope this new chapter brings you endless happiness.",
-  "(And for us too i guess?) 😅",
-  "May you always find reasons to smile, even on difficult days.",
-  "Hmmm...",
-  "Apa lagi ya?",
-  "Aku berharap, di usia kamu yang sekarang, ada semakin banyak hal baik yang datang ke dalam hidup kamu. Bukan hanya untuk kamu, tetapi juga untuk Papa, Mama, dan kedua adik kamu yang ganteng itu.\n\n(Aku juga gak kalah ganteng kan?) 😎",
-  "Semoga Tuhan selalu menjaga keluarga kecil kalian, memberikan kesehatan dan menyertai setiap langkah kalian.\n\n(Kalau ditambah aku dan anak aku, mungkin bisa jadi keluarga besar ya.) 🫶\n\nSemoga kalian selalu punya waktu untuk berkumpul, berbagi cerita, tertawa bersama, dan menciptakan lebih banyak kenangan indah.\n\n(Aku mau join pleaseee!)\n\nHopefully, one day i will be more than just a guest. 🤍",
-  "Cukup lah ya?",
-  "Ada lagi dehhh",
-  "Palingan aku mau tambahin aja sih, spesifik tentang kita...",
-  "Ada satu hal yang mungkin selama ini belum sepenuhnya aku sampaikan kepada kamu, yaitu betapa aku BENCI🌹 kamu, betapa aku menyayangi kamu, dan betapa seriusnya aku menjalani hubungan ini.\n\n6 tahun mengenal kamu... jujur, gak pernah terbayangkan oleh aku bahwa pada akhirnya kita bisa sampai di titik ini. Bahwa seseorang yang sudah cukup lama aku kenal, bahkan pernah aku campakan, ternyata bisa menjadi seseorang yang sekarang aku panggil sayang. Dan untuk itu, aku benar-benar bersyukur.",
-  "Terima kasih karena sudah memberikan aku kesempatan. Aku gak pernah ingin menganggap hubungan kita sebagai sesuatu yang biasa saja. Aku melihatnya sebagai kesempatan yang ingin aku jaga sebaik mungkin, kesempatan yang gak ingin aku khianati, dan sesuatu yang ingin aku perjuangkan dengan sungguh-sungguh.\n\nAku juga ingin berterima kasih karena selama ini kamu selalu berusaha memahami aku. Aku tahu mungkin gak semua hal yang aku inginkan mudah untuk kamu pahami atau lakukan, tetapi aku melihat bagaimana kamu terus mencoba. Aku menghargai itu, lebih dari yang mungkin selama ini bisa aku ungkapkan.",
-  "Dan untuk tahun 2026 ini, aku punya satu harapan besar untuk kita...",
-  "Aku ingin tahun ini menjadi penutup bagi segala hal dari masa lalu yang masih perlu kita selesaikan. Entah itu tentang seseorang, perasaan, kenangan, atau apa pun yang mungkin masih menyisakan keterikatan. Aku ingin kita sama-sama benar-benar bebas. Aku bebas dari masa laluku, kamu juga bebas dari masa lalumu. Bukan berarti kita harus melupakan siapa kita sebelumnya, tetapi gak ada lagi bagian dari masa lalu yang masih kita bawa, kita tunggu, atau kita pertahankan dalam hubungan yang sekarang.",
-  "Aku ingin ketika kita memasuki perjalanan yang baru, kita benar-benar datang dengan hati yang sama-sama utuh. Gak ada bayang-bayang seseorang, gak ada perasaan yang masih tertinggal, dan gak ada hal tersembunyi yang suatu saat bisa membuat kita mempertanyakan satu sama lain.",
-  "Aku ingin hubungan ini menjadi tempat kita pulang. Tempat di mana kita sama-sama merasa nyaman, AMAN, dihargai, dan gak perlu terus-menerus meragukan posisi masing-masing. Aku ingin kamu bisa merasa aman bersamaku, sebagaimana aku juga ingin merasakan hal yang sama darimu.",
-  "Aku ingin kamu terus berkembang, aku juga ingin terus berkembang, dan aku ingin kita bertumbuh bersama. Bukan menjadi dua orang yang harus selalu sempurna untuk satu sama lain, tetapi dua orang yang mau terus belajar, memperbaiki diri, dan saling memahami.",
-  "Karena kalau boleh jujur, ketika aku membayangkan masa depanku, aku gak hanya membayangkan tentang memiliki seseorang untuk menemani hari-hariku. Aku membayangkan sebuah persatuan, sebuah keluarga, dan kehidupan yang ingin aku bangun bersama kamu.",
-  "Dan orang yang aku lihat dalam bayangan itu adalah kamu.",
-  "Eaaak sok keren lu dah pin 🤗😂🤣😭🙏",
-  "Kalau kata Fajar Sadboy mahhh...",
-  "LDR berat nih bosss!",
-  "Kukuk kukuk kukk kukk",
-  "Sudah ya sayang ni last yapping....",
-  "Aku malu deh....",
-  "Intinya Love youuu so muchhh 🥰"
-];
-let currentPage = 0;
-function renderPage() {
-  const area = document.getElementById("messageArea");
-  area.style.animation = "none";
-  void area.offsetWidth;
-  area.style.animation = "bookFadeIn .4s ease";
-  document.getElementById("message").textContent = pages[currentPage];
-  document.getElementById("pageNumber").textContent = String(currentPage + 1).padStart(2,"0") + " / " + String(pages.length).padStart(2,"0");
-  document.getElementById("prev").disabled = currentPage === 0;
-  document.getElementById("next").disabled = currentPage === pages.length - 1;
-}
-function changePage(direction) {
-  const nextPage = currentPage + direction;
-  if (nextPage < 0 || nextPage >= pages.length) return;
-  currentPage = nextPage;
-  renderPage();
-}
-document.getElementById("prev").addEventListener("click", () => changePage(-1));
-document.getElementById("next").addEventListener("click", () => changePage(1));
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (passwordInput.value === TEMPORARY_PASSWORD) {
+      document.open();
+      document.write(bookHTML);
+      document.close();
+    } else {
+      alert("Oops! 🔐\nPassword belum tepat...");
+      passwordInput.select();
+    }
+  });
+})();
 </script>
-
-</body>
+    </body>
 </html>
