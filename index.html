@@ -372,9 +372,11 @@ const book = document.getElementById("birthday-book");
 const passwordInput = document.getElementById("staticrypt-password");
 const toggleIcon = document.querySelector(".staticrypt-toggle-password-visibility");
 
-toggleIcon.addEventListener("click", () => {
-  passwordInput.type = passwordInput.type === "password" ? "text" : "password";
-});
+if (toggleIcon && passwordInput) {
+  toggleIcon.addEventListener("click", () => {
+    passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+  });
+}
 
 const music = document.getElementById("backgroundMusic");
 const musicControls = document.getElementById("musicControls");
