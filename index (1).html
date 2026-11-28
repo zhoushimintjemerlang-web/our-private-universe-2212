@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html class="staticrypt-html">
+<head>
+<meta charset="utf-8">
+<title>Mr. &amp; Mrs. Bubs</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --emerald: #062b24;
+  --emerald-deep: #031713;
+  --gold: #d6b56e;
+  --gold-soft: #a98545;
+  --ivory: #f3e9d2;
+}
+* { box-sizing: border-box; }
+.staticrypt-html, .staticrypt-body { min-height: 100%; margin: 0; }
+.staticrypt-body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 38%, rgba(24, 83, 65, .48), transparent 48%),
+    radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, .72), transparent 58%),
+    linear-gradient(135deg, #020d0b 0%, #07352b 48%, #020e0c 100%);
+  color: var(--ivory);
+  font-family: "Lora", Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+}
+.staticrypt-content {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 34px 18px;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+.staticrypt-content::before {
+  content: "";
+  position: fixed;
+  inset: 18px;
+  border: 1px solid rgba(214, 181, 110, .58);
+  pointer-events: none;
+}
+.staticrypt-content::after {
+  content: "";
+  position: fixed;
+  inset: 25px;
+  border: 1px solid rgba(214, 181, 110, .18);
+  pointer-events: none;
+}
+.staticrypt-page {
+  width: 100%;
+  max-width: 440px;
+  margin: auto;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+.staticrypt-form {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 42px 34px 36px;
+  text-align: center;
+  background: linear-gradient(155deg, rgba(7, 38, 32, .97), rgba(2, 17, 14, .98));
+  border: 1px solid var(--gold-soft);
+  outline: 1px solid rgba(214, 181, 110, .25);
+  outline-offset: 7px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .55), inset 0 0 35px rgba(214, 181, 110, .035);
+}
+.staticrypt-monogram {
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--gold);
+  font-family: "Lora", Georgia, serif;
+  font-weight: 800;
+  font-size: 37px;
+  letter-spacing: -4px;
+  padding-right: 4px;
+  text-shadow: 0 2px 14px rgba(214, 181, 110, .2);
+}
+.staticrypt-monogram::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+}
+.zodiac-emblem {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  color: var(--gold);
+  opacity: .95;
+  filter: drop-shadow(0 0 4px rgba(214, 181, 110, .18));
+}
+.zodiac-emblem svg {
+  position: absolute;
+  top: 50%;
+  width: 19px;
+  height: 28px;
+  overflow: visible;
+  transform: translateY(-50%);
+}
+.zodiac-emblem .cancer { left: -18px; }
+.zodiac-emblem .capricorn { right: -18px; }
+.zodiac-emblem .constellation-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.05;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.zodiac-emblem .star { fill: currentColor; }
+@media (max-width: 480px) {
+  .zodiac-emblem svg { width: 16px; height: 24px; }
+  .zodiac-emblem .cancer { left: -15px; }
+  .zodiac-emblem .capricorn { right: -15px; }
+}
+.staticrypt-instructions { margin: 0 0 27px; }
+.staticrypt-title {
+  margin: 0;
+  color: var(--gold);
+  font-family: "Lora", Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 4.7vw, 24px);
+  font-weight: 800;
+  line-height: 1.48;
+  letter-spacing: .1px;
+}
+.staticrypt-title .title-main {
+  display: block;
+  font-family: "Lora", Georgia, serif;
+  font-weight: 800;
+}
+.staticrypt-title .title-names {
+  display: block;
+  margin-top: 3px;
+  color: var(--gold);
+  font-family: "Great Vibes", "Brush Script MT", "Segoe Script", cursive;
+  font-size: clamp(50px, 10vw, 62px);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: 0;
+  -webkit-text-stroke: .35px currentColor;
+  text-shadow: 0 1px 1px rgba(214, 181, 110, .22);
+}
+.staticrypt-hr {
+  width: auto;
+  margin: 22px auto 24px;
+  border: 0;
+  color: var(--gold);
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+  font-size: 21px;
+  letter-spacing: 5px;
+  line-height: 1.3;
+  opacity: .95;
+}
+.staticrypt-password-container {
+  position: relative;
+  width: 100%;
+  margin: 0 0 18px;
+  background: rgba(0, 0, 0, .22);
+  border: 1px solid rgba(214, 181, 110, .62);
+}
+.staticrypt-form input[type="password"],
+.staticrypt-form input[type="text"] {
+  display: block;
+  width: 100%;
+  padding: 16px 44px 16px 16px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ivory);
+  font-family: "Lora", Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+.staticrypt-form input::placeholder { color: rgba(243, 233, 210, .78); opacity: 1; font-family: "Lora", Georgia, serif; font-weight: 700; }
+.staticrypt-toggle-password-visibility {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 19px;
+  height: 19px;
+  padding: 0;
+  opacity: .72;
+  filter: invert(82%) sepia(27%) saturate(560%) hue-rotate(5deg) brightness(92%);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.staticrypt-form .staticrypt-decrypt-button {
+  width: 100%;
+  padding: 16px 14px;
+  border: 1px solid #e6c982;
+  outline: 1px solid rgba(214, 181, 110, .22);
+  outline-offset: 3px;
+  background: linear-gradient(135deg, #e4c77f, #b88c43);
+  color: #10271f;
+  font-family: "Lora", Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: filter .2s ease, transform .2s ease;
+}
+.staticrypt-form .staticrypt-decrypt-button:hover,
+.staticrypt-form .staticrypt-decrypt-button:focus {
+  filter: brightness(1.1);
+}
+.staticrypt-form .staticrypt-decrypt-button:active { transform: translateY(1px); }
+.staticrypt-remember { color: var(--ivory); }
+.staticrypt-remember input { accent-color: var(--gold); }
+.hidden { display: none !important; }
+.staticrypt-spinner-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--emerald-deep);
+}
+.staticrypt-spinner {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border: .22em solid rgba(214, 181, 110, .35);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-border .75s linear infinite;
+}
+@keyframes spinner-border { to { transform: rotate(360deg); } }
+@media (max-width: 480px) {
+  .staticrypt-content { padding: 28px 25px; }
+  .staticrypt-content::before { inset: 12px; }
+  .staticrypt-content::after { inset: 18px; }
+  .staticrypt-form { padding: 35px 23px 30px; }
+  .staticrypt-monogram { width: 82px; height: 82px; font-size: 34px; margin-bottom: 23px; }
+}
+
+/* Unified typography: every piece of page text uses a bold, refined connected script. */
+.staticrypt-body,
+.staticrypt-body button,
+.staticrypt-body input,
+.staticrypt-body label,
+.staticrypt-monogram,
+.staticrypt-title,
+.staticrypt-title .title-main,
+.staticrypt-title .title-names,
+.staticrypt-form input[type="password"],
+.staticrypt-form input[type="text"],
+.staticrypt-form input::placeholder,
+.staticrypt-form .staticrypt-decrypt-button,
+.staticrypt-remember {
+  font-family: "Dancing Script", "Segoe Script", "Brush Script MT", cursive !important;
+  font-weight: 700 !important;
+  font-style: normal;
+}
+.staticrypt-monogram { font-size: 39px; letter-spacing: -1px; padding-right: 0; }
+.staticrypt-title { font-size: clamp(25px, 5vw, 30px); line-height: 1.35; }
+.staticrypt-title .title-main,
+.staticrypt-title .title-names {
+  display: block;
+  color: var(--gold);
+  font-family: "Dancing Script", "Segoe Script", "Brush Script MT", cursive !important;
+  font-size: inherit;
+  font-weight: 700 !important;
+  line-height: 1.35;
+  letter-spacing: 0;
+  -webkit-text-stroke: .15px currentColor;
+}
+.staticrypt-title .title-names { margin-top: 2px; }
+.staticrypt-form input[type="password"],
+.staticrypt-form input[type="text"] { font-size: 19px; }
+.staticrypt-form input::placeholder { font-size: 19px; }
+.staticrypt-form .staticrypt-decrypt-button { font-size: 20px; letter-spacing: .5px; }
+.staticrypt-remember { font-size: 17px; }
+
+</style>
+
+</head>
+<body class="staticrypt-body">
+        <div id="staticrypt_content" class="staticrypt-content">
+            <div class="staticrypt-page">
+                <div class="staticrypt-form">
+                    <div class="staticrypt-instructions">
+                        <div class="staticrypt-monogram" aria-label="KH monogram">KH
+                            <span class="zodiac-emblem" role="img" aria-label="Cancer constellation on the left and Capricorn constellation on the right">
+                                <svg class="cancer" viewBox="0 0 24 32" aria-hidden="true">
+                                    <path class="constellation-line" d="M4 7 L12 12 L7 22 L17 27" />
+                                    <circle class="star" cx="4" cy="7" r="1.8"/><circle class="star" cx="12" cy="12" r="1.5"/><circle class="star" cx="7" cy="22" r="1.7"/><circle class="star" cx="17" cy="27" r="1.8"/>
+                                </svg>
+                                <svg class="capricorn" viewBox="0 0 24 32" aria-hidden="true">
+                                    <path class="constellation-line" d="M4 6 L11 13 L18 9 L14 21 L7 27" />
+                                    <circle class="star" cx="4" cy="6" r="1.7"/><circle class="star" cx="11" cy="13" r="1.5"/><circle class="star" cx="18" cy="9" r="1.8"/><circle class="star" cx="14" cy="21" r="1.6"/><circle class="star" cx="7" cy="27" r="1.8"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <p class="staticrypt-title"><span class="title-main">This book is the property of</span><span class="title-names">Mr. &amp; Mrs. Bubs</span></p>
+                    </div>
+
+                    <div class="staticrypt-hr" aria-label="floral hearts">🌸🎀❣️</div>
+
+                    <form id="staticrypt-form" action="#" method="post">
+                        <div class="staticrypt-password-container">
+                            <input
+                                id="staticrypt-password"
+                                type="password"
+                                name="password"
+                                placeholder="Where we become us...?"
+                                autofocus
+                            />
+
+                            <img
+                                class="staticrypt-toggle-password-visibility"
+                                alt="template_toggle_show"
+                                title="template_toggle_show"
+                                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNS4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjQgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTM4LjggNS4xQzI4LjQtMy4xIDEzLjMtMS4yIDUuMSA5LjJTLTEuMiAzNC43IDkuMiA0Mi45bDU5MiA0NjRjMTAuNCA4LjIgMjUuNSA2LjMgMzMuNy00LjFzNi4zLTI1LjUtNC4xLTMzLjdMNTI1LjYgMzg2LjdjMzkuNi00MC42IDY2LjQtODYuMSA3OS45LTExOC40YzMuMy03LjkgMy4zLTE2LjcgMC0yNC42Yy0xNC45LTM1LjctNDYuMi04Ny43LTkzLTEzMS4xQzQ2NS41IDY4LjggNDAwLjggMzIgMzIwIDMyYy02OC4yIDAtMTI1IDI2LjMtMTY5LjMgNjAuOEwzOC44IDUuMXpNMjIzLjEgMTQ5LjVDMjQ4LjYgMTI2LjIgMjgyLjcgMTEyIDMyMCAxMTJjNzkuNSAwIDE0NCA2NC41IDE0NCAxNDRjMCAyNC45LTYuMyA0OC4zLTE3LjQgNjguN0w0MDggMjk0LjVjOC40LTE5LjMgMTAuNi00MS40IDQuOC02My4zYy0xMS4xLTQxLjUtNDcuOC02OS40LTg4LjYtNzEuMWMtNS44LS4yLTkuMiA2LjEtNy40IDExLjdjMi4xIDYuNCAzLjMgMTMuMiAzLjMgMjAuM2MwIDEwLjItMi40IDE5LjgtNi42IDI4LjNsLTkwLjMtNzAuOHpNMzczIDM4OS45Yy0xNi40IDYuNS0zNC4zIDEwLjEtNTMgMTAuMWMtNzkuNSAwLTE0NC02NC41LTE0NC0xNDRjMC02LjkgLjUtMTMuNiAxLjQtMjAuMkw4My4xIDE2MS41QzYwLjMgMTkxLjIgNDQgMjIwLjggMzQuNSAyNDMuN2MtMy4zIDcuOS0zLjMgMTYuNyAwIDI0LjZjMTQuOSAzNS43IDQ2LjIgODcuNyA5MyAxMzEuMUMxNzQuNSA0NDMuMiAyMzkuMiA0ODAgMzIwIDQ4MGM0Ny44IDAgODkuOS0xMi45IDEyNi4yLTMyLjVMMzczIDM4OS45eiIvPjwvc3ZnPg=="
+                            />
+                        </div>
+
+                        <label id="staticrypt-remember-label" class="staticrypt-remember hidden">
+                            <input id="staticrypt-remember" type="checkbox" name="remember" />
+                            Remember me
+                        </label>
+
+                        <input type="submit" class="staticrypt-decrypt-button" value="ENTER THE UNIVERSE" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        
+<div id="birthday-book" class="hidden">
+  <div class="book"><div class="paper">
+    <div class="page-number" id="pageNumber">01 / 32</div>
+    <main class="message-area" id="messageArea"><div class="message" id="message"></div></main>
+    <nav class="navigation">
+      <button id="prev" type="button">← Previous</button>
+      <button id="next" class="next" type="button">Next →</button>
+    </nav>
+  </div></div>
+</div>
+
+<audio id="backgroundMusic" src="music.mp3" preload="auto" loop></audio>
+<div id="musicControls" class="music-controls hidden" aria-label="Music controls">
+  <button id="musicPlayPause" type="button" aria-label="Pause music">Ⅱ</button>
+  <button id="musicMute" type="button" aria-label="Mute music">♫</button>
+</div>
+<style>
+.music-controls{position:fixed;right:18px;bottom:18px;z-index:9999;display:flex;gap:8px;padding:8px;background:rgba(28,19,14,.78);border:1px solid #c9a45e;border-radius:999px;box-shadow:0 4px 18px #0005}
+.music-controls.hidden{display:none}
+.music-controls button{width:40px;height:40px;border:1px solid #d8bd7d;border-radius:50%;background:#493326;color:#f7e7bd;font:700 18px Georgia,serif;cursor:pointer}
+.music-controls button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media(max-width:600px){.music-controls{right:12px;bottom:12px}.music-controls button{width:38px;height:38px}}
+</style>
+
+<script>
+const TEMPORARY_PASSWORD = "123456";
+const gate = document.getElementById("staticrypt_content");
+const book = document.getElementById("birthday-book");
+const passwordInput = document.getElementById("staticrypt-password");
+const toggleIcon = document.querySelector(".staticrypt-toggle-password-visibility");
+
+if (toggleIcon && passwordInput) {
+  toggleIcon.addEventListener("click", () => {
+    passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+  });
+}
+
+const music = document.getElementById("backgroundMusic");
+const musicControls = document.getElementById("musicControls");
+const playPauseButton = document.getElementById("musicPlayPause");
+const muteButton = document.getElementById("musicMute");
+let musicStarted = false;
+
+// Volume: 80% at the start, rising by 5% each second to 100%.
+// During the final four seconds it falls by 5% per second to 80%.
+function updateMusicVolume() {
+  if (!Number.isFinite(music.duration) || music.duration <= 0) {
+    music.volume = 0.8;
+    return;
+  }
+  const elapsed = music.currentTime;
+  const remaining = music.duration - elapsed;
+  let volume;
+  if (elapsed < 4) {
+    volume = 0.8 + 0.05 * Math.floor(elapsed);
+  } else if (remaining <= 4) {
+    volume = 0.8 + 0.05 * Math.max(0, Math.floor(remaining));
+  } else {
+    volume = 1;
+  }
+  music.volume = Math.min(1, Math.max(0.8, volume));
+}
+
+music.addEventListener("timeupdate", updateMusicVolume);
+music.addEventListener("play", () => {
+  playPauseButton.textContent = "Ⅱ";
+  playPauseButton.setAttribute("aria-label", "Pause music");
+});
+music.addEventListener("pause", () => {
+  playPauseButton.textContent = "▶";
+  playPauseButton.setAttribute("aria-label", "Play music");
+});
+playPauseButton.addEventListener("click", async () => {
+  if (music.paused) {
+    try { await music.play(); } catch (error) { console.warn("Audio playback could not start:", error); }
+  } else {
+    music.pause();
+  }
+});
+muteButton.addEventListener("click", () => {
+  music.muted = !music.muted;
+  muteButton.textContent = music.muted ? "×" : "♫";
+  muteButton.setAttribute("aria-label", music.muted ? "Unmute music" : "Mute music");
+});
+
+document.getElementById("staticrypt-form").addEventListener("submit", function (event) {
+  event.preventDefault();
+  if (passwordInput.value === TEMPORARY_PASSWORD) {
+    gate.classList.add("hidden");
+    book.classList.remove("hidden");
+    document.body.style.background = "#493326";
+    document.body.style.padding = "0";
+    document.body.style.fontFamily = 'Georgia, "Times New Roman", serif';
+    musicControls.classList.remove("hidden");
+    if (!musicStarted) {
+      musicStarted = true;
+      music.volume = 0.8;
+      music.currentTime = 0;
+      music.play().catch((error) => {
+        console.warn("Browser blocked automatic playback:", error);
+        playPauseButton.textContent = "▶";
+      });
+    }
+    renderPage();
+  } else {
+    alert("Oops! 🔐\nPassword belum tepat...");
+    passwordInput.focus();
+    passwordInput.select();
+  }
+});
+
+const pages = [
+  "Happy Sweet Seventeen ya sayang 🎉",
+  "Ehhh...",
+  "Happy Birthday maksudnya... kan sudah tidak muda lagi 😂",
+  "Happy Birthday yang ke-22 ya sayang!",
+  "Well, jokes aside...",
+  "Another year older, another year more wonderful.",
+  "I hope this new chapter brings you endless happiness.",
+  "(And for us too i guess?) 😅",
+  "May you always find reasons to smile, even on difficult days.",
+  "Hmmm...",
+  "Apa lagi ya?",
+  "Aku berharap, di usia kamu yang sekarang, ada semakin banyak hal baik yang datang ke dalam hidup kamu. Bukan hanya untuk kamu, tetapi juga untuk Papa, Mama, dan kedua adik kamu yang ganteng itu.\n\n(Aku juga gak kalah ganteng kan?) 😎",
+  "Semoga Tuhan selalu menjaga keluarga kecil kalian, memberikan kesehatan dan menyertai setiap langkah kalian.\n\n(Kalau ditambah aku dan anak aku, mungkin bisa jadi keluarga besar ya.) 🫶\n\nSemoga kalian selalu punya waktu untuk berkumpul, berbagi cerita, tertawa bersama, dan menciptakan lebih banyak kenangan indah.\n\n(Aku mau join pleaseee!)\n\nHopefully, one day i will be more than just a guest. 🤍",
+  "Cukup lah ya?",
+  "Ada lagi dehhh",
+  "Palingan aku mau tambahin aja sih, spesifik tentang kita...",
+  "Ada satu hal yang mungkin selama ini belum sepenuhnya aku sampaikan kepada kamu, yaitu betapa aku BENCI🌹 kamu, betapa aku menyayangi kamu, dan betapa seriusnya aku menjalani hubungan ini.\n\n6 tahun mengenal kamu... jujur, gak pernah terbayangkan oleh aku bahwa pada akhirnya kita bisa sampai di titik ini. Bahwa seseorang yang sudah cukup lama aku kenal, bahkan pernah aku campakan, ternyata bisa menjadi seseorang yang sekarang aku panggil sayang. Dan untuk itu, aku benar-benar bersyukur.",
+  "Terima kasih karena sudah memberikan aku kesempatan. Aku gak pernah ingin menganggap hubungan kita sebagai sesuatu yang biasa saja. Aku melihatnya sebagai kesempatan yang ingin aku jaga sebaik mungkin, kesempatan yang gak ingin aku khianati, dan sesuatu yang ingin aku perjuangkan dengan sungguh-sungguh.\n\nAku juga ingin berterima kasih karena selama ini kamu selalu berusaha memahami aku. Aku tahu mungkin gak semua hal yang aku inginkan mudah untuk kamu pahami atau lakukan, tetapi aku melihat bagaimana kamu terus mencoba. Aku menghargai itu, lebih dari yang mungkin selama ini bisa aku ungkapkan.",
+  "Dan untuk tahun 2026 ini, aku punya satu harapan besar untuk kita...",
+  "Aku ingin tahun ini menjadi penutup bagi segala hal dari masa lalu yang masih perlu kita selesaikan. Entah itu tentang seseorang, perasaan, kenangan, atau apa pun yang mungkin masih menyisakan keterikatan. Aku ingin kita sama-sama benar-benar bebas. Aku bebas dari masa laluku, kamu juga bebas dari masa lalumu. Bukan berarti kita harus melupakan siapa kita sebelumnya, tetapi gak ada lagi bagian dari masa lalu yang masih kita bawa, kita tunggu, atau kita pertahankan dalam hubungan yang sekarang.",
+  "Aku ingin ketika kita memasuki perjalanan yang baru, kita benar-benar datang dengan hati yang sama-sama utuh. Gak ada bayang-bayang seseorang, gak ada perasaan yang masih tertinggal, dan gak ada hal tersembunyi yang suatu saat bisa membuat kita mempertanyakan satu sama lain.",
+  "Aku ingin hubungan ini menjadi tempat kita pulang. Tempat di mana kita sama-sama merasa nyaman, AMAN, dihargai, dan gak perlu terus-menerus meragukan posisi masing-masing. Aku ingin kamu bisa merasa aman bersamaku, sebagaimana aku juga ingin merasakan hal yang sama darimu.",
+  "Aku ingin kamu terus berkembang, aku juga ingin terus berkembang, dan aku ingin kita bertumbuh bersama. Bukan menjadi dua orang yang harus selalu sempurna untuk satu sama lain, tetapi dua orang yang mau terus belajar, memperbaiki diri, dan saling memahami.",
+  "Karena kalau boleh jujur, ketika aku membayangkan masa depanku, aku gak hanya membayangkan tentang memiliki seseorang untuk menemani hari-hariku. Aku membayangkan sebuah persatuan, sebuah keluarga, dan kehidupan yang ingin aku bangun bersama kamu.",
+  "Dan orang yang aku lihat dalam bayangan itu adalah kamu.",
+  "Eaaak sok keren lu dah pin 🤗😂🤣😭🙏",
+  "Kalau kata Fajar Sadboy mahhh...",
+  "LDR berat nih bosss!",
+  "Kukuk kukuk kukk kukk",
+  "Sudah ya sayang ni last yapping....",
+  "Aku malu deh....",
+  "Intinya Love youuu so muchhh 🥰"
+];
+let currentPage = 0;
+function renderPage() {
+  const area = document.getElementById("messageArea");
+  area.style.animation = "none";
+  void area.offsetWidth;
+  area.style.animation = "bookFadeIn .4s ease";
+  document.getElementById("message").textContent = pages[currentPage];
+  document.getElementById("pageNumber").textContent = String(currentPage + 1).padStart(2,"0") + " / " + String(pages.length).padStart(2,"0");
+  document.getElementById("prev").disabled = currentPage === 0;
+  document.getElementById("next").disabled = currentPage === pages.length - 1;
+}
+function changePage(direction) {
+  const nextPage = currentPage + direction;
+  if (nextPage < 0 || nextPage >= pages.length) return;
+  currentPage = nextPage;
+  renderPage();
+}
+document.getElementById("prev").addEventListener("click", () => changePage(-1));
+document.getElementById("next").addEventListener("click", () => changePage(1));
+</script>
+
+</body>
+</html>
